@@ -39,13 +39,13 @@
   </a>
 </div>
 
-<script type="module">
-  import BackgroundPaths from './shadcn/background-paths.js';
-
+<!-- Interactive background -->
+<script src="./shadcn/background-paths.js"></script>
+<script>
   const bg = new BackgroundPaths({
     container: document.getElementById('background'),
     particleCount: 150,
-    interactive: true, // ακολουθεί mouse
+    interactive: true,
     color: '#00ff88',
     speed: 0.5
   });
