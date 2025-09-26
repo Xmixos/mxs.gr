@@ -14,7 +14,10 @@
     flex-direction:column; text-align:center; color:#00ff88;
   }
 
-  #background { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+  #background, #matrix {
+    position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;
+  }
+
   #background::after {
     content:'';
     position:absolute; top:0; left:0; width:100%; height:100%;
@@ -37,14 +40,9 @@
   h1 {
     font-size:3rem;
     color:#00ff88;
-    text-shadow:
-      0 0 5px #00ff88,
-      0 0 10px #00ff88,
-      0 0 15px #00ff88;
-    margin:20px 0 10px 0;
-    z-index:1; position:relative;
-    letter-spacing:2px;
-    animation: flicker 2s infinite;
+    text-shadow:0 0 5px #00ff88,0 0 10px #00ff88,0 0 15px #00ff88;
+    margin:20px 0 10px 0; z-index:1; position:relative;
+    letter-spacing:2px; animation: flicker 2s infinite;
   }
 
   @keyframes flicker {
@@ -82,6 +80,7 @@
 <body>
 
 <div id="background"></div>
+<canvas id="matrix"></canvas>
 
 <img class="logo" src="logo.png" alt="Mxs Logo">
 <h1>🚧 Mxs.gr 🚧</h1>
@@ -102,17 +101,48 @@
   </a>
 </div>
 
-<!-- Interactive background -->
 <script src="./shadcn/background-paths.js"></script>
 <script>
+  // Shadcn particle background
   const bg = new BackgroundPaths({
     container: document.getElementById('background'),
-    particleCount: 100, // πιο few και καθαρά
+    particleCount: 100,
     interactive: true,
     color: '#00ff88',
     lineAlpha: 0.1,
     speed: 0.3
   });
+
+  // Matrix/grid animation
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const columns = [];
+  const fontSize = 14;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    columns.length = 0;
+    for(let i=0; i<Math.floor(width/fontSize); i++) columns[i] = Math.random()*height;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0,0,width,height);
+    ctx.fillStyle = '#00ff88';
+    ctx.font = fontSize+'px monospace';
+    for(let i=0; i<columns.length; i++){
+      const text = String.fromCharCode(0x30A0 + Math.random()*96);
+      ctx.fillText(text, i*fontSize, columns[i]);
+      if(columns[i] > height + Math.random()*100) columns[i]=0;
+      else columns[i] += fontSize;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
 </script>
 
 </body>
