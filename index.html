@@ -5,166 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mxs.gr - Under Construction</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: black;
-    font-family: 'Orbitron', sans-serif;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-  }
-
-  img.logo {
-    width: 150px;
-    height: auto;
-    z-index: 1;
-    position: relative;
-    animation: pulse 3s infinite;
-  }
-
-  h1 {
-    font-size: 3rem;
-    color: #00ff88;
-    text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
-    margin: 20px 0 10px 0;
-    z-index: 1;
-    position: relative;
-  }
-
-  p {
-    font-size: 1.2rem;
-    color: #aaffcc;
-    text-shadow: 0 0 3px #aaffcc, 0 0 6px #aaffcc;
-    z-index: 1;
-    position: relative;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-
-  .socials {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    z-index: 1;
-    position: relative;
-  }
-
-  .social-icon {
-    width: 45px;
-    height: 45px;
-    transition: transform 0.3s, filter 0.3s;
-    filter: drop-shadow(0 0 3px #00ff88);
-  }
-
-  .social-icon:hover {
-    transform: scale(1.2) rotate(5deg);
-    filter: drop-shadow(0 0 10px #00ff88);
-  }
+  body { margin:0; padding:0; height:100vh; width:100vw; overflow:hidden; font-family: 'Orbitron', sans-serif; background:black; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center;}
+  #background { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;}
+  img.logo { width:150px; animation:pulse 3s infinite; z-index:1; position:relative;}
+  h1 { font-size:3rem; color:#00ff88; text-shadow:0 0 5px #00ff88,0 0 10px #00ff88; margin:20px 0 10px 0; z-index:1; position:relative;}
+  p { font-size:1.2rem; color:#aaffcc; text-shadow:0 0 3px #aaffcc; z-index:1; position:relative;}
+  @keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+  .socials { margin-top:30px; display:flex; justify-content:center; gap:20px; z-index:1; position:relative;}
+  .social-icon { width:45px; height:45px; transition: transform 0.3s, filter 0.3s; filter: drop-shadow(0 0 3px #00ff88);}
+  .social-icon:hover { transform:scale(1.2) rotate(5deg); filter:drop-shadow(0 0 10px #00ff88);}
 </style>
 </head>
 <body>
-<canvas id="trails"></canvas>
+
+<div id="background"></div>
+
 <img class="logo" src="logo.png" alt="Mxs Logo">
 <h1>🚧 Mxs.gr 🚧</h1>
 <p>Under Construction – Έρχεται σύντομα!</p>
 
 <div class="socials">
-  <!-- Instagram -->
   <a href="https://www.instagram.com/xristos_mxs?igsh=MXIwMnI2d2tkZjZncw%3D%3D&utm_source=qr" target="_blank">
-    <svg class="social-icon" viewBox="0 0 512 512">
-      <path fill="none" stroke="#00ff88" stroke-width="40" d="M349 69H163c-52 0-94 42-94 94v186c0 52 42 94 94 94h186c52 0 94-42 94-94V163c0-52-42-94-94-94z"/>
-      <circle cx="256" cy="256" r="80" fill="none" stroke="#00ff88" stroke-width="40"/>
-      <circle cx="350" cy="162" r="20" fill="#00ff88"/>
-    </svg>
+    <svg class="social-icon" viewBox="0 0 512 512"><path fill="none" stroke="#00ff88" stroke-width="40" d="M349 69H163c-52 0-94 42-94 94v186c0 52 42 94 94 94h186c52 0 94-42 94-94V163c0-52-42-94-94-94z"/><circle cx="256" cy="256" r="80" fill="none" stroke="#00ff88" stroke-width="40"/><circle cx="350" cy="162" r="20" fill="#00ff88"/></svg>
   </a>
-
-  <!-- Facebook -->
   <a href="https://www.facebook.com/share/1CusLVyP3Z/?mibextid=wwXIfr" target="_blank">
-    <svg class="social-icon" viewBox="0 0 320 512">
-      <path fill="none" stroke="#00ff88" stroke-width="30" d="M279 288l14-92h-88v-60c0-25 12-50 52-50h40V6s-37-6-72-6c-73 0-121 44-121 124v70h-81v92h81v224h100V288h71z"/>
-    </svg>
+    <svg class="social-icon" viewBox="0 0 320 512"><path fill="none" stroke="#00ff88" stroke-width="30" d="M279 288l14-92h-88v-60c0-25 12-50 52-50h40V6s-37-6-72-6c-73 0-121 44-121 124v70h-81v92h81v224h100V288h71z"/></svg>
   </a>
-
-  <!-- X / Twitter -->
   <a href="https://x.com/mxsxristos?s=21&t=a2sqhG2XMgQqY7KCpwMOzA" target="_blank">
-    <svg class="social-icon" viewBox="0 0 512 512">
-      <path fill="none" stroke="#00ff88" stroke-width="35" d="M459 151c0 3 0 6 0 9 0 93-71 200-200 200-40 0-77-12-108-32 6 1 11 1 17 1 33 0 64-11 88-30-30 0-55-20-64-46 10 1 20 1 30-1-32-6-56-35-56-69v-1c9 5 19 8 30 9-18-12-30-33-30-57 0-13 4-25 9-36 33 40 82 66 137 69-1-5-2-10-2-15 0-35 28-63 63-63 18 0 34 8 45 21 14-3 27-8 38-15-4 13-13 24-26 30z"/>
-    </svg>
+    <svg class="social-icon" viewBox="0 0 512 512"><path fill="none" stroke="#00ff88" stroke-width="35" d="M459 151c0 3 0 6 0 9 0 93-71 200-200 200-40 0-77-12-108-32 6 1 11 1 17 1 33 0 64-11 88-30-30 0-55-20-64-46 10 1 20 1 30-1-32-6-56-35-56-69v-1c9 5 19 8 30 9-18-12-30-33-30-57 0-13 4-25 9-36 33 40 82 66 137 69-1-5-2-10-2-15 0-35 28-63 63-63 18 0 34 8 45 21 14-3 27-8 38-15-4 13-13 24-26 30z"/></svg>
   </a>
-
-  <!-- LinkedIn -->
   <a href="https://www.linkedin.com/in/christos-michos-815bab17b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-    <svg class="social-icon" viewBox="0 0 448 512">
-      <path fill="none" stroke="#00ff88" stroke-width="30" d="M100 448H7V148h93v300zM53 108C24 108 0 84 0 56S24 4 53 4s53 24 53 52-24 52-53 52zm394 340h-93V302c0-34-12-57-43-57-23 0-37 15-43 30-2 5-3 13-3 21v152h-93V148h93v40c12-19 32-46 78-46 57 0 100 37 100 117v189z"/>
-    </svg>
+    <svg class="social-icon" viewBox="0 0 448 512"><path fill="none" stroke="#00ff88" stroke-width="30" d="M100 448H7V148h93v300zM53 108C24 108 0 84 0 56S24 4 53 4s53 24 53 52-24 52-53 52zm394 340h-93V302c0-34-12-57-43-57-23 0-37 15-43 30-2 5-3 13-3 21v152h-93V148h93v40c12-19 32-46 78-46 57 0 100 37 100 117v189z"/></svg>
   </a>
 </div>
 
-<script>
-const canvas = document.getElementById('trails');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+<script type="module">
+  import BackgroundPaths from './shadcn/background-paths.js';
 
-let centerX = canvas.width / 2;
-let centerY = canvas.height / 2;
-
-class OrbitParticle {
-  constructor() {
-    this.radius = Math.random() * 120 + 50;
-    this.angle = Math.random() * Math.PI * 2;
-    this.size = Math.random() * 2 + 1; // μικρότερα
-    this.speed = (Math.random() * 0.01) + 0.003; // πιο αργά
-  }
-
-  update() {
-    this.angle += this.speed;
-    this.x = centerX + this.radius * Math.cos(this.angle);
-    this.y = centerY + this.radius * Math.sin(this.angle);
-  }
-
-  draw() {
-    ctx.fillStyle = `rgba(0,255,136,0.5)`; // πιο subtle
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-    ctx.fill();
-  }
-}
-
-const particles = [];
-for(let i = 0; i < 100; i++) particles.push(new OrbitParticle());
-
-function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  centerX = canvas.width / 2;
-  centerY = canvas.height / 2;
-});
+  const bg = new BackgroundPaths({
+    container: document.getElementById('background'),
+    particleCount: 150,
+    interactive: true, // ακολουθεί mouse
+    color: '#00ff88',
+    speed: 0.5
+  });
 </script>
+
 </body>
 </html>
