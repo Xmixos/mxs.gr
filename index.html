@@ -1,90 +1,118 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mxs.gr - Under Construction</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mxs.gr - Under Construction</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: black;
-      font-family: 'Orbitron', sans-serif;
-      overflow: hidden;
-      text-align: center;
-      color: #00ff88;
-    }
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: black;
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden;
+    text-align: center;
+  }
 
-    /* Neon light bars animation */
-    .neon-bars {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(0,255,136,0.05),
-        rgba(0,255,136,0.05) 2px,
-        transparent 2px,
-        transparent 4px
-      );
-      animation: slide 3s linear infinite;
-      z-index: 0;
-    }
+  canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
 
-    @keyframes slide {
-      0% { background-position: 0 0; }
-      100% { background-position: 100px 100px; }
-    }
+  img.logo {
+    width: 150px;
+    height: auto;
+    z-index: 1;
+    position: relative;
+    animation: pulse 2s infinite;
+  }
 
-    img.logo {
-      width: 150px;
-      height: auto;
-      margin-bottom: 30px;
-      animation: pulse 2s infinite;
-      z-index: 1;
-      position: relative;
-    }
+  h1 {
+    font-size: 3rem;
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 40px #00ff88;
+    margin: 20px 0 10px 0;
+    z-index: 1;
+    position: relative;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      animation: glow 1.5s infinite alternate;
-      z-index: 1;
-      position: relative;
-    }
+  p {
+    font-size: 1.2rem;
+    color: #aaffcc;
+    text-shadow: 0 0 5px #aaffcc, 0 0 10px #aaffcc;
+    z-index: 1;
+    position: relative;
+  }
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #aaffcc;
-      z-index: 1;
-      position: relative;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88; }
-      to { text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88; }
-    }
-  </style>
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+</style>
 </head>
 <body>
-  <div class="neon-bars"></div>
-  <img class="logo" src="logo.png" alt="Mxs Logo">
-  <h1>🚧 Mxs.gr 🚧</h1>
-  <p>Under Construction – Έρχεται σύντομα!</p>
+<canvas id="trails"></canvas>
+<img class="logo" src="logo.png" alt="Mxs Logo">
+<h1>🚧 Mxs.gr 🚧</h1>
+<p>Under Construction – Έρχεται σύντομα!</p>
+
+<script>
+  const canvas = document.getElementById('trails');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  class Trail {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random()*canvas.width;
+      this.y = Math.random()*canvas.height;
+      this.size = Math.random()*3+1;
+      this.speedX = (Math.random()-0.5)*2;
+      this.speedY = (Math.random()-0.5)*2;
+      this.alpha = Math.random()*0.5+0.5;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height) this.reset();
+    }
+    draw() {
+      ctx.fillStyle = `rgba(0,255,136,${this.alpha})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  const trails = [];
+  for(let i=0;i<200;i++) trails.push(new Trail());
+
+  function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    trails.forEach(t=>{
+      t.update();
+      t.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
 </body>
 </html>
