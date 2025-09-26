@@ -14,10 +14,34 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background-color: #000000; /* Μαύρο background */
-      color: #00ff88;
+      background: black;
       font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
       text-align: center;
+      color: #00ff88;
+    }
+
+    /* Neon light bars animation */
+    .neon-bars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(0,255,136,0.05),
+        rgba(0,255,136,0.05) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      animation: slide 3s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes slide {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
     }
 
     img.logo {
@@ -25,18 +49,24 @@
       height: auto;
       margin-bottom: 30px;
       animation: pulse 2s infinite;
+      z-index: 1;
+      position: relative;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0;
       animation: glow 1.5s infinite alternate;
+      z-index: 1;
+      position: relative;
     }
 
     p {
       font-size: 1.2rem;
       margin-top: 10px;
       color: #aaffcc;
+      z-index: 1;
+      position: relative;
     }
 
     @keyframes pulse {
@@ -52,6 +82,7 @@
   </style>
 </head>
 <body>
+  <div class="neon-bars"></div>
   <img class="logo" src="logo.png" alt="Mxs Logo">
   <h1>🚧 Mxs.gr 🚧</h1>
   <p>Under Construction – Έρχεται σύντομα!</p>
